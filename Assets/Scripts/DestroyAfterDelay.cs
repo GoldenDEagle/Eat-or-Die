@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 
-public class DestroyAfterDelay : MonoBehaviour
+namespace Assets.Scripts
 {
-    void Start()
+    public class DestroyAfterDelay : MonoBehaviour
     {
-        Destroy(gameObject, 2);
+        void Start()
+        {
+            Destroy(gameObject, 2);
+        }
     }
 }

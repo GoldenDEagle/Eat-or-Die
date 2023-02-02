@@ -29,8 +29,8 @@ namespace Assets.Scripts
         [SerializeField] private AudioClip _gameST;
         [SerializeField] private AudioClip _menuST;
 
-        public bool isGameActive;
-        public bool isGamePaused;
+        public bool IsGameActive;
+        public bool IsGamePaused;
 
         private int _score;
         private float _defaultTimeScale;
@@ -43,7 +43,7 @@ namespace Assets.Scripts
 
         public void StartGame(int difficulty = 1)
         {
-            isGameActive = true;
+            IsGameActive = true;
             _spawnRate /= difficulty;
 
             _livesText.gameObject.SetActive(true);
@@ -70,7 +70,7 @@ namespace Assets.Scripts
 
         private IEnumerator SpawnTargets()
         {
-            while (isGameActive)
+            while (IsGameActive)
             {
                 yield return new WaitForSeconds(_spawnRate);
                 int index = Random.Range(0, _targets.Count);
@@ -80,18 +80,18 @@ namespace Assets.Scripts
         
         private void PauseGame()
         {
-            if (!isGameActive) return;
+            if (!IsGameActive) return;
             if (_pauseScreen.activeInHierarchy == false)
             {
                 _pauseScreen.SetActive(true);
                 Time.timeScale = 0;
-                isGamePaused = true;
+                IsGamePaused = true;
             }
             else
             {
                 _pauseScreen.SetActive(false);
                 Time.timeScale = _defaultTimeScale;
-                isGamePaused = false;
+                IsGamePaused = false;
             }
         }
 
@@ -118,7 +118,7 @@ namespace Assets.Scripts
 
         public void GameOver()
         {
-            isGameActive = false;
+            IsGameActive = false;
 
             _gameOverText.gameObject.SetActive(true);
             _restartButton.gameObject.SetActive(true);
